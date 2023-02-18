@@ -1,0 +1,75 @@
+\ProvidesPackage{../lecture}
+
+\newcommand{\colorExo}{\color{darkcoral}}
+\newcommand{\colorHint}{\color{uclablue}}
+\newcommand{\colorSol}{\color{cadmiumgreen}}
+\newcommand{\colorVideO}{\color{indianred}}
+
+\newcommand{\exercice}[1]{\video{0}}
+\newcommand{\finexercice}{}
+
+\newcommand{\video}[1]{\def\myvideo{#1}}
+
+\newcommand{\enonce}[2]{%
+  \refstepcounter{exo}%
+  \hypertarget{contributions:#1}{}%
+  \label{exos:#1}{%
+    {\bf\colorExo\Large Exercice \arabic{exo}} \ \ \colorExo#2%
+  }\vspace{2mm}\par%
+}%
+
+\newcommand{\finenonce}[1]{
+    \ifthenelse{%
+      \equal{\ref{hints:#1}}{\ref{bidon}}%
+      \and%
+      \equal{\ref{sols:#1}}{\ref{bidon}}%
+    }{}{%
+      %\par{%
+      \vspace*{8pt}%
+      \footnotesize%
+      \ifthenelse{%
+        \equal{\ref{hints:#1}}{\ref{bidon}}%
+      }{}{%
+        \hyperlink{hints:#1}{\colorHint Indication $\blacktriangledown$}%
+        \qquad%
+      }%
+      \ifthenelse{%
+        \equal{\ref{sols:#1}}{\ref{bidon}}%
+      }{}{%
+        \hyperlink{sols:#1}{\colorSol Correction $\blacktriangledown$}%
+        \qquad%
+      }%
+    }%
+    \ifthenelse{%
+      \equal{\myvideo}{0}}{}{%
+        \footnotesize%
+        \href{\myvideo}{\colorVideO Vidéo $\blacksquare$}%
+      }%
+  %
+  \hfill{\scriptsize\texttt{[#1]}}%
+  \vspace{2mm}\hrule\vspace*{7mm}%
+}%
+
+\newcommand{\indication}[1]{%
+  \hypertarget{hints:#1}{}%
+  \label{hints:#1}%
+  {\hyperlink{exos:#1}%
+  {\bf \colorHint Indication pour l'exercice \ref{exos:#1} $\blacktriangle$}%
+  }\vspace{2mm}\par%
+}%
+
+\newcommand{\finindication}{\vspace{2mm}\hrule\vspace*{7mm}}
+\newcommand{\noindication}{}
+\newcommand{\finindications}{\newpage}
+
+\newcommand{\correction}[1]{%
+  \hypertarget{sols:#1}{}%
+  \label{sols:#1}%
+  {\hyperlink{exos:#1}%
+  {\bf \colorSol Correction de l'exercice \ref{exos:#1} $\blacktriangle$}%
+  }\vspace{2mm}\par%
+}%
+
+\newcommand{\fincorrection}{\vspace{2mm}\hrule\vspace*{7mm}}
+\newcommand{\nocorrection}{}
+\newcommand{\finenonces}{\newpage}

@@ -1,0 +1,155 @@
+\ProvidesPackage{../lecture}
+
+\newcounter{exo}[section]
+
+\newcounter{defi}[section]\setcounter{defi}{0}
+\newcounter{prop}[section]\setcounter{prop}{0}
+\newcounter{theo}[section]\setcounter{theo}{0}
+\newcounter{lem}[section]\setcounter{lem}{0}
+\newcounter{rmq}[section]\setcounter{rmq}{0}
+\newcounter{ex}[section]\setcounter{ex}{0}
+\newcounter{demo}[section]\setcounter{demo}{0}
+\newcounter{propri}[section]\setcounter{propri}{0}
+\newcounter{hpt}[section]\setcounter{hpt}{0}
+\newcounter{prp}[section]\setcounter{prp}{0}
+
+\newcommand{\exo}[1]{\subfile{#1/#1.E.tex}}
+\newcommand{\hint}[1]{\subfile{content/exos/#1/#1.H.tex}}
+\newcommand{\sol}[1]{\subfile{content/exos/#1/#1.C.tex}}
+
+\geometry{
+  a4paper,
+  left=18mm,
+  right=18mm,
+  top=30mm,
+  bottom=20mm,
+}
+
+\newcommand{\caution}{%
+\bigskip
+\begin{minipage}{.13\textwidth}
+  \begin{center}
+    \includegraphics[scale=0.1]{custom/figures/caution.pdf}
+  \end{center}
+\end{minipage}
+\begin{minipage}{.85\textwidth}
+  Ces notes de cours sont en cours d'élaboration. Si vous avez la moindre question ou remarque ne pas hésiter à contacter par mail : \href{mailto:antoine.gere@estaca.fr}{\texttt{antoine.gere@estaca.fr}}.
+\end{minipage}
+}
+
+\newcommand{\mysection}[2]{\section{#1}\subfile{content/#2/#2.tex}}
+
+\newcommand{\myabstract}{
+\bigskip
+\begin{abstract}
+  \subfile{content/abstract/abstract.tex}
+\end{abstract}
+\bigskip
+}
+
+\newcommand{\mybiblio}{\newpage\nocite{*}
+\bibliography{content/biblio/biblio}
+\bibliographystyle{ieeetr}
+\addcontentsline{toc}{section}{Références}}
+
+\newcommand{\makeMyDraftSheet}[1]{
+\newpage
+\foreach \n in{1,...,#1}  {
+\newpage
+\renewcommand{\headrulewidth}{0pt}
+\vspace*{-40mm}\hspace*{-24mm}
+\begin{tikzpicture}
+  \draw[black!60] (3.8, 0) -- (3.8, 29.7);
+	\foreach \y in {1.8, ..., 26.1} {
+	 \draw[black!40] (0, \y) -- (22, \y);
+	}
+\end{tikzpicture}\n
+}
+\newpage \ \vspace*{-20pt}
+}
+
+\usetikzlibrary{patterns.meta}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\cfoot{\thepage \ - \pageref{LastPage}}
+
+\setcounter{secnumdepth}{3}
+\setlength\parindent{0pt}
+
+\pgfplotsset{compat=1.18}
+\newcommand{\myparagraph}[1]{\paragraph{#1}\ \par \medskip}
+
+\newcommand{\archivesExams}{%
+  \newpage%
+  \ \vfill%
+  {\begin{description}%
+    \item[Examen à mi-semestre] \
+    \begin{description}
+      \item[2021 - 2022 :] Exercices \ref{exos:rdm-0019}, \ref{exos:rdm-0020} et \ref{exos:rdm-0021}.
+      \item[2020 - 2021 :] Exercices \ref{exos:rdm-0025} et \ref{exos:rdm-0026}.
+    \end{description}
+    \item[Examen final] \
+    \begin{description}
+      \item[2020 - 2021 :] Exercices \ref{exos:rdm-0017} et \ref{exos:rdm-0018}.
+    \end{description}
+\end{description}}}
+
+\backgroundsetup{
+  pages=all,
+  %firstpage=true,
+  placement=top,
+  contents={\includegraphics[scale=0.3]{custom/figures/estaca-isae.pdf}},
+  color=black,
+  angle=0,
+  opacity=0.8,
+  scale=0.2,
+  %position=current page.north,
+  %anchor=top,
+  %nodeanchor=center,
+  hshift=800pt,
+  vshift=-140pt,
+}
+
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+{\Huge\bfseries\sffamily\@title}\\[20pt]
+{\Large\sffamily\@author}\\[10pt]
+{\large\sffamily Année 2022 - 2023\footnote{\scriptsize\texttt{version du \today}}}\\[20pt]
+\vspace{20pt}}}
+\makeatother
+
+\newcommand{\coverRdM}{%
+  \begin{center}%
+    \includegraphics[width=\textwidth]{custom/figures/cover-RdM.pdf}%
+  \end{center}%
+}%
+
+\newcommand{\backcover}[4]{%
+  \newpage
+  %
+  \begin{flushright}
+    \includegraphics[scale=0.35]{custom/figures/QR-OneDrive.pdf}
+  \end{flushright}
+  %
+  \ \vfill
+  %
+  \'Etudiant(e) (Nom, Prénom) : \dotfill \\[20pt]
+  Promotion, groupe : \dotfill \\[20pt]
+  Email : \dotfill
+  %
+  \bigskip
+  \subsection*{Organisation de ce cours}
+  Ce cours est composé de 13 séances de 2 heures en demi-groupe. L'évaluation sera composé de deux examens, un premier partiel à mi-semestre et un second en fin de semestre.\par
+  \medskip
+  En complément de ce cours auront lieu des travaux pratiques.
+  \subsection*{Auteurs de ces notes de cours}
+  %D'après un cours de #1.\par
+  Cours et exercices construit et rédigé par #2.\par
+  Travaux pratiques construits et rédigés par #3.\par
+  Relu par #4.\par
+  %Merci aux étudiants de 2ème année pour leurs nombreuses remarques.
+}

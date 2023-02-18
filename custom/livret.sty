@@ -1,0 +1,200 @@
+\ProvidesPackage{exam}
+
+\pgfplotsset{compat=1.18}
+
+\newcommand{\exo}[1]{\subfile{content/exos/#1/#1.E.tex}}
+\newcommand{\hint}[1]{\subfile{content/exos/#1/#1.H.tex}}
+\newcommand{\sol}[1]{\subfile{content/exos/#1/#1.C.tex}}
+
+\backgroundsetup{
+  pages=all,
+  placement=top,
+  contents={\includegraphics[scale=0.3]{custom/figures/estaca-isae.pdf}},
+  color=black,
+  angle=0,
+  opacity=0.8,
+  scale=0.2,
+  hshift=800pt,
+  vshift=-140pt,
+}
+
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=20mm,
+  bottom=20mm,
+}
+
+\setlength\parindent{0pt}
+
+\newcounter{exo}[section]
+\newcounter{mt}
+
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\newcommand{\myunit}{1 cm}
+\tikzset{
+    node style sp/.style={draw,circle,minimum size=\myunit},
+    node style ge/.style={circle,minimum size=\myunit},
+    arrow style mul/.style={draw,sloped,midway,fill=white},
+    arrow style plus/.style={midway,sloped,fill=white},
+}
+
+\newcommand{\finexam}{\thispagestyle{fancy}\rfoot{Fin}}
+\newcommand{\finsujet}{\newpage}
+
+\newcommand\promo[1]{\renewcommand\@promo{#1}}
+\newcommand\@promo{}
+\newcommand\prof[1]{\renewcommand\@prof{#1}}
+\newcommand\@prof{}
+
+\newcommand\DocCalc[1]{\renewcommand\@DocCalc{\DocCalcvalue{#1}}}
+\newcommand\@DocCalc{}
+\newcommand{\DocCalcvalue}[1]
+{
+  \ifthenelse{\equal{#1}{1}}{
+  \begin{center}
+    \begin{tabular}{llll}
+      Document(s) autorisé(s) : & $\Box$ Oui & $\XBox$ Non\\[5pt]
+      Calculatrice autorisée :  & $\Box$ Oui & $\XBox$ Non
+    \end{tabular}
+  \end{center}
+  }{}
+  \ifthenelse{\equal{#1}{2}}{
+  \begin{center}
+    \begin{tabular}{llll}
+      Document(s) autorisé(s) : & $\Box$ Oui & $\XBox$ Non\\[5pt]
+      Calculatrice autorisée :  & $\XBox$ Oui & $\Box$ Non
+    \end{tabular}
+  \end{center}
+  }{}
+  \ifthenelse{\equal{#1}{3}}{
+  \begin{center}
+    \begin{tabular}{llll}
+      Document(s) autorisé(s) : & $\XBox$ Oui & $\Box$ Non\\[5pt]
+      Calculatrice autorisée :  & $\Box$ Oui & $\XBox$ Non
+    \end{tabular}
+  \end{center}
+  }{}
+  \ifthenelse{\equal{#1}{4}}{
+  \begin{center}
+    \begin{tabular}{llll}
+      Document(s) autorisé(s) : & $\XBox$ Oui & $\Box$ Non\\[5pt]
+      Calculatrice autorisée :  & $\XBox$ Oui & $\Box$ Non
+    \end{tabular}
+  \end{center}
+  }{}
+}
+
+\newcommand\rmq[1]{%
+  \renewcommand\@rmq{\begin{itemize}[label=\ding{110},font=\tiny]#1\end{itemize}}%
+}%
+\newcommand\@rmq{}
+
+\makeatletter
+
+\renewcommand\maketitle{
+  {%
+  \vspace*{40pt}%
+  {\fontsize{24}{29}\selectfont\bfseries\@title}\\[20pt]%
+  {\Large\sffamily\@date}\\[20pt]%
+  {\Large\sffamily\@promo}\\[20pt]%
+  }%
+  \begin{tcolorbox}[colback=white,colframe=rossocorsa]%
+    Professeur(s) : \@prof \par%
+    \bigskip%
+    \'Etudiant (Nom, Prénom) : \dotfill \par%
+    \medskip%
+    Groupe : \dotfill \par%
+    \medskip%
+    Numéro d'étudiant : \dotfill \par%
+    \vspace*{-3pt}
+    \medskip\ %
+    \@DocCalc%
+    \medskip%
+    \textit{Remarques :}%
+    \vspace*{-3pt}
+    \medskip%
+    \@rmq%
+    \vspace*{1pt}%
+  \end{tcolorbox}
+  \vfill
+  \begin{center}
+    \begin{tcolorbox}[colback=white,colframe=rossocorsa,title={\large Note et commentaires},width=300pt,height=100pt]
+      \
+    \end{tcolorbox}
+  \end{center}
+  \vfill
+  \newpage
+}
+
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\cfoot{\thepage \ - \pageref{LastPage}}
+\fancyfoot[RO]{{\normalsize \sffamily Tournez la page S.V.P.}} %Odd Pages
+\fancyfoot[RE]{} % Even Pages
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\makelivret}[1]{
+  \newpage
+  \foreach \n in{1,...,#1}  {
+  \newpage
+  \renewcommand{\headrulewidth}{0pt}
+  \vspace*{-36mm}\hspace*{-24mm}
+  \begin{tikzpicture}
+    \draw[black!60] (3.8, 0) -- (3.8, 30.78);
+	  \foreach \y in {1.8, ..., 26.1} {
+	  \draw[black!40] (0, \y) -- (22, \y);
+    }
+  \end{tikzpicture}\n
+  }
+  \newpage \
+}
+
+\usetikzlibrary{calc}
+\newcommand{\pagelivret}[8]{%
+  \ifthenelse{\equal{#1}{1}}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \vspace*{-23mm}\hspace*{-24mm}
+    \begin{tikzpicture}
+      \draw[black!60] (3.8, 0) -- (3.8, 29.68);
+      \filldraw[black] (3.9,26.1) circle (0pt) node[anchor=west]{\bf\color{darkcoral}\Large Exercice #2  (#3)};
+      \filldraw[black] (3.9,25) circle (0pt) node[anchor=west,align=left]{#4. \ #5};
+      \coordinate (QS) at (0,#6);
+      \filldraw[black] ($(3.9,25) - (QS) - (0,1)$) circle (0pt) node[anchor=west,align=left]{#7. \ #8};
+	    \foreach \y in {1.8, ..., 26.1}%
+      {\draw[black!40] (0, \y) -- (22, \y);}
+    \end{tikzpicture}
+    \newpage \
+  }{}
+  \ifthenelse{\equal{#1}{2}}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \vspace*{-23mm}\hspace*{-24mm}
+    \begin{tikzpicture}
+      \draw[black!60] (3.7, 0) -- (3.7, 29.68);
+      \filldraw[black] (3.9,26) circle (0pt) node[anchor=west,align=left]{#2. \ #3};
+      \coordinate (QS) at (0,#4);
+      \filldraw[black] ($(3.9,25) - (QS)$) circle (0pt) node[anchor=west,align=left]{#5. \ #6};
+      \filldraw[black] (0,0) circle (0pt) node{#7 #8};
+	    \foreach \y in {1.8, ..., 26.1}%
+      {\draw[black!40] (0, \y) -- (22, \y);}
+    \end{tikzpicture}
+    \newpage \
+  }{}
+  \ifthenelse{\equal{#1}{3}}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \vspace*{-23mm}\hspace*{-24mm}
+    \begin{tikzpicture}
+      \draw[black!60] (3.8, 0) -- (3.8, 29.68);
+      \filldraw[black] (0,0) circle (0pt) node{#2 #3 #4 #5 #6 #7 #8};
+	    \foreach \y in {1.8, ..., 26.1}%
+      {\draw[black!40] (0, \y) -- (22, \y);}
+    \end{tikzpicture}
+    \newpage \
+  }{}
+}

@@ -1,0 +1,14 @@
+# Fdb version 3
+["pdflatex"] 1664878041 "rdm-0023.E.tex" "build/rdm-0023.E.pdf" "rdm-0023.E" 1664878042
+  "build/lecture.tex" 0 -1 0 ""
+  "build/rdm-0023.E.aux" 1664876435 34 3985256e7290058c681f74d7a3565a19 ""
+  "c:/texlive/2021/texmf-dist/tex/latex/import/import.sty" 1624887683 6201 0ad8b5da8e12f60a88d546b2198a56f2 ""
+  "c:/texlive/2021/texmf-dist/tex/latex/subfiles/subfiles.cls" 1624891830 1507 57de335d88fde4e5c924dfed577fdb74 ""
+  "c:/texlive/2021/texmf-dist/web2c/texmf.cnf" 1624888016 40042 fe981136cbb5f3715ab1b0e46e3d3892 ""
+  "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1624893143 2814177 0727f0d38c4dd7b03e8fb9edbbaf31c3 ""
+  "c:/texlive/2021/texmf.cnf" 1624892984 713 614551405fc44b98efbf516466e3c909 ""
+  "lecture.tex" 0 -1 0 ""
+  "rdm-0023.E.tex" 1664878039 2867 3e8a9e66073f57a90796f5fbc27acb3a ""
+  (generated)
+  "build/rdm-0023.E.log"
+  "build/rdm-0023.E.pdf"

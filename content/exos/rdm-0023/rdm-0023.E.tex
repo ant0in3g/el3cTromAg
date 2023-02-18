@@ -1,0 +1,86 @@
+\documentclass[lecture.tex]{subfiles}
+
+\begin{document}
+
+\exercice{}
+%\video{https://youtu.be/blablabla}
+\enonce{rdm-0023}{Statique et efforts internes}
+
+Nous considérons une poutre de longueur $4L$, en appui simple en $B$ (ponctuelle) et en appui articulé en $D$ (pivot). La poutre est soumise à deux forces ponctuelles $\vec{F}=-F \vec{y}$ en $A$ et $E$, et une force répartie entre $C$ et $D$. Le poids de la structure n'est pas pris en compte.
+
+\medskip
+
+On donne
+
+\begin{center}
+  \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    L = 400 mm & F = 800 N & p = 1200 N/m \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\bigskip
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\coordinate(A) at (0,0);
+\coordinate(B) at (2,0);
+\coordinate(C) at (4,0);
+\coordinate(D) at (6,0);
+\coordinate(E) at (8,0);
+\draw[ultra thick,anchor=south west,cerulean]
+(A) node[anchor=south west]{A}
+--(B) node[anchor=south]{B}
+--(C) node[anchor=south east]{C}
+--(D) node[anchor=south west]{D}
+--(E) node[anchor=south west]{E};
+\filldraw (A) circle (1pt);
+\filldraw (B) circle (1pt);
+\filldraw (C) circle (1pt);
+\filldraw (D) circle (1pt);
+\filldraw (E) circle (1pt);
+\pic at (B) {ponctuelle};
+\chargecont[asparagus,thick]{C}{2}{$p$};
+\draw[very thick,red,latex-] (A) --++(0,1) node[anchor=east]{$F$};
+\pic at (D) {pivot};
+\draw[very thick,red,latex-] (E) --++(0,1) node[anchor=east]{$F$};
+\draw [thick,<->] (0,-1.5) -- (2,-1.5);
+\filldraw (1,-1.5) circle (0pt) node[anchor=north] {$L$};
+\draw [thick,<->] (2,-1.5) -- (4,-1.5);
+\filldraw (3,-1.5) circle (0pt) node[anchor=north] {$L$};
+\draw [thick,<->] (4,-1.5) -- (6,-1.5);
+\filldraw (5,-1.5) circle (0pt) node[anchor=north] {$L$};
+\draw [thick,<->] (6,-1.5) -- (8,-1.5);
+\filldraw (7,-1.5) circle (0pt) node[anchor=north] {$L$};
+%% REPERE
+\draw [thick,<->] (11,0) -- (10,0) -- (10,1);
+\filldraw (11,0) circle (0pt) node[anchor=north] {$x$};
+\filldraw (10,1) circle (0pt) node[anchor=west] {$y$};
+\filldraw (9.8,-0.2) circle (1pt);
+\filldraw (9.7,-0.2) circle (0pt) node[anchor=east] {$z$};
+\draw (9.8,-0.2) circle (0.15cm);
+\draw [->] ($(10,0.1)+(0.4,0)$) arc (0:80:0.4);
+\filldraw (10.3,0.4) circle (0pt) node[anchor=west] {${\small +}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+  \item Étudiez l’hyperstaticité du système.
+  \item Etude statique.
+  \begin{enumerate}
+  \item Trouver les inconnus de liaison de la structure.
+  \item Faire l’application numérique.
+  \end{enumerate}
+  \item Efforts internes.
+  \begin{enumerate}
+    \item Combien de coupe faut-il pour étudier les efforts internes du système ?
+    \item Calculez analytiquement les expressions des efforts internes pour $x \in[0 ; 5L]$.
+    \item Tracez les graphes de ces efforts internes pour $x \in[0 ; 5L]$ en précisant des valeurs numériques sur les axes.
+  \end{enumerate}
+\end{enumerate}
+
+\finenonce{rdm-0023}
+\finexercice
+
+\end{document}

@@ -1,0 +1,101 @@
+\documentclass[lecture.tex]{subfiles}
+
+\begin{document}
+
+
+\exercice{}
+%\video{https://youtu.be/blablabla}
+\enonce{rdm-0010}{Tôle sous sollicitation plane}
+
+Soit une tôle carrée en aluminium de côté $a$ et d'épaisseur $e$. On la soumet à diverses sollicitations planes représentées sur les schémas ci dessous. On considère le point $M$ situé en son centre.
+
+\begin{itemize}
+  \item[$\bullet$] $F$ est un effort ponctuel ;
+  \item[$\bullet$] $f$ est un effort linéique ;
+  \item[$\bullet$] $q$ est un effort surfacique.
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture}
+
+    \filldraw[ultra thick,anchor=south west,babyblue] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle ;
+    \draw [ultra thick,<-,awesome] (1,2) -- (1,3) node[anchor=west] {$F$};
+    \draw [ultra thick,<-,awesome] (1,0) -- (1,-1) node[anchor=west] {$F$};
+    \node[below] (0,0) at (0,0) {$A$};
+    \node[below] (2,0) at (2,0) {$B$};
+    \node[above] (2,2) at (2,2) {$C$};
+    \node[above] (0,2) at (0,2) {$D$};
+    \node (1,1) at (1,1) {\textbf{(a)}};
+
+    \filldraw[ultra thick,anchor=south west,babyblue] (3.5,0) -- (5.5,0) -- (5.5,2) -- (3.5,2) -- cycle ;
+    \draw [ultra thick,<-,awesome] (4.5,2) -- (4.5,3) node[anchor=west] {$F$};
+    \draw [ultra thick,<-,awesome] (4.5,0) -- (4.5,-1) node[anchor=west] {$F$};
+    \foreach \i in {0,0.2,...,2} \draw [->,awesome] (3.5,\i) -- (2.9,\i) ;
+    \node[awesome] (3.7,1) at (3.7,1) {$f$};
+    \foreach \i in {0,0.2,...,2} \draw [->,awesome] (5.5,\i) -- (6.1,\i) ;
+    \node[awesome] (5.3,1) at (5.3,1) {$f$};
+    \node[below] (3.5,0) at (3.5,0) {$A$};
+    \node[below] (5.5,0) at (5.5,0) {$B$};
+    \node[above] (5.5,2) at (5.5,2) {$C$};
+    \node[above] (3.5,2) at (3.5,2) {$D$};
+    \node (4.5,1) at (4.5,1) {\textbf{(b)}};
+
+    \filldraw[ultra thick,anchor=south west,babyblue] (7,0) -- (9,0) -- (9,2) -- (7,2) -- cycle ;
+    \draw [<-,awesome] (7.2,0.2) -- (7.9,0.2) ;
+    \draw [<-,awesome] (8.1,0.2) -- (8.8,0.2) ;
+    \draw [->,awesome] (7.2,1.8) -- (7.9,1.8) ;
+    \draw [->,awesome] (8.1,1.8) -- (8.8,1.8) ;
+    \draw [<-,awesome] (7.1,0.2) -- (7.1,0.9) ;
+    \draw [<-,awesome] (7.1,1.1) -- (7.1,1.8) ;
+    \draw [->,awesome] (8.9,0.2) -- (8.9,0.9) ;
+    \draw [->,awesome] (8.9,1.1) -- (8.9,1.8) ;
+    \node[awesome] (8,-0.2) at (8,-0.2) {$q$};
+    \node[awesome] (8,2.2) at (8,2.2) {$q$};
+    \node[awesome] (6.8,1) at (6.8,1) {$q$};
+    \node[awesome] (9.2,1) at (9.2,1) {$q$};
+    \node[below] (7,0) at (7,0) {$A$};
+    \node[below] (9,0) at (9,0) {$B$};
+    \node[above] (9,2) at (9,2) {$C$};
+    \node[above] (7,2) at (7,2) {$D$};
+    \node (8,1) at (8,1) {\textbf{(c)}};
+
+    \filldraw[ultra thick,anchor=south west,babyblue] (10.5,0) -- (12.5,0) -- (12.5,2) -- (10.5,2) -- cycle ;
+    \draw [<-,awesome] (10.7,0.2) -- (11.4,0.2) ;
+    \draw [<-,awesome] (11.6,0.2) -- (12.3,0.2) ;
+    \draw [->,awesome] (10.7,1.8) -- (11.4,1.8) ;
+    \draw [->,awesome] (11.6,1.8) -- (12.3,1.8) ;
+    \draw [<-,awesome] (10.6,0.2) -- (10.6,0.9) ;
+    \draw [<-,awesome] (10.6,1.1) -- (10.6,1.8) ;
+    \draw [->,awesome] (12.4,0.2) -- (12.4,0.9) ;
+    \draw [->,awesome] (12.4,1.1) -- (12.4,1.8) ;
+    \node[awesome] (11.5,0.4) at (11.5,0.4) {$q$};
+    \node[awesome] (11.5,1.6) at (11.5,1.6) {$q$};
+    \node[awesome] (10.3,1) at (10.3,1) {$q$};
+    \node[awesome] (12.7,1) at (12.7,1) {$q$};
+    \draw [ultra thick,<-,awesome] (11.5,2) -- (11.5,3) node[anchor=west] {$F$};
+    \draw [ultra thick,<-,awesome] (11.5,0) -- (11.5,-1) node[anchor=west] {$F$};
+    \node[below] (O,0) at (0,0) {$A$};
+    \node[below] (2,0) at (2,0) {$B$};
+    \node[above] (2,2) at (2,2) {$C$};
+    \node[above] (0,2) at (0,2) {$D$};
+    \node (11.5,1) at (11.5,1) {\textbf{(d)}};
+
+    \draw [thick,<->] (16,1) -- (15,1) -- (15,2);
+    \filldraw (16,1) circle (0pt) node[anchor=north] {$x$};
+    \filldraw (15,2) circle (0pt) node[anchor=west] {$y$};
+    \filldraw (14.8,0.8) circle (1pt);
+    \filldraw (14.7,0.8) circle (0pt) node[anchor=east] {$z$};
+    \draw (14.8,0.8) circle (0.15cm);
+    \draw [->] ($(15,1.1)+(0.4,0)$) arc (0:80:0.4);
+    \filldraw (15.3,1.4) circle (0pt) node[anchor=west] {${\small +}$};
+
+  \end{tikzpicture}
+\end{center}
+
+Déterminer le tenseur des contraintes $\Sigma$ au point $M$ dans le repère $(x,y)$ pour chaque type de sollicitation.
+
+
+\finenonce{rdm-0010}
+\finexercice
+
+\end{document}
