@@ -113,20 +113,20 @@
   %vshift=-140pt,
 %}
 
-\makeatletter
-\renewcommand\maketitle{
-{\raggedright
-{\Huge\bfseries\sffamily\@title}\\[20pt]
-{\Large\sffamily\@author}\\[10pt]
-{\large\sffamily Année 2022 - 2023\footnote{\scriptsize\texttt{version du \today}}}\\[20pt]
-\vspace{20pt}}}
-\makeatother
-
 \newcommand{\coverElecTromAg}{%
   \begin{center}%
     \includegraphics[width=\textwidth]{custom/figures/cover-el3cTromAg.pdf}%
   \end{center}%
 }%
+
+\makeatletter
+\renewcommand\maketitle{
+{\raggedright
+{\Huge\bfseries\sffamily\@title}\\[20pt]
+{\Large\sffamily\@author}\\[10pt]
+{\large\sffamily Année 2022 - 2023\footnote{\scriptsize\texttt{version du \today}}}
+\vspace{20pt}}}
+\makeatother
 
 \newcommand{\backcover}{%
   \newpage
